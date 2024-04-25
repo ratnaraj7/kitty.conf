@@ -39,21 +39,29 @@ def handle_result(args: List[str],
                 if tab.current_layout.name != "stack":
                     tab.toggle_layout("stack")
             else:
-                # TODO use neighbouring windows instead
-                for index, window in enumerate(tab.windows):
-                    if w_number is None:
-                        if window.id != mwid:
-                            to_focus = window.id
-                            break
-                    elif w_number >= len(tab.windows):
-                        if index == len(tab.windows) - 1:
-                            to_focus = window.id
-                    elif index >= w_number and window.id != mwid:
-                        to_focus = window.id
-                        break
-
-                if to_focus is not None:
-                    tab.set_active_window(to_focus)
+                match w_number:
+                    case 1:
+                        tab.first_window()
+                    case 2:
+                        tab.second_window()
+                    case 3:
+                        tab.third_window()
+                    case 4:
+                        tab.fourth_window()
+                    case 5:
+                        tab.fifth_window()
+                    case 6:
+                        tab.sixth_window()
+                    case 7:
+                        tab.seventh_window()
+                    case 8:
+                        tab.eighth_window()
+                    case 9:
+                        tab.ninth_window()
+                    case 10:
+                        tab.tenth_window()
+                    case _:
+                        tab.next_window()
 
                 if tab.current_layout.name != "splits":
                     tab.toggle_layout("splits")
